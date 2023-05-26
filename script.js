@@ -1,49 +1,68 @@
-const textArea = document.querySelector(".text-area");
-const mensaje = document.querySelector(".mensaje");
+const input = document.getElementById("input-text");
+const output = document.getElementById("output-text");
+const button = document.querySelectorAll("button");
 
-//La letra "e" es convertida para "enter"
-//La letra "i" es convertida para "imes"
-//La letra "a" es convertida para "ai"
-//La letra "o" es convertida para "ober"
-//La letra "u" es convertida para "ufat"
-
-function btnEncriptar(){
-    const textoEncriptado = encriptar(textArea.value)
-    mensaje.value = textoEncriptado
-    textArea.value = "";
-    mensaje.style.backgroundImage = "none"
+function onlyContainsLowercase(str) {
+    return /^[a-z0-9/ /ñ:;,.¿?¡!]+$/.test(str);
 }
 
-function encriptar(stringEncriptada){
-    let matrizCodigo = [["e","enter"],["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringEncriptada = stringEncriptada.toLowerCase()
-
-    for(let i = 0; i < matrizCodigo.length; i++){
-        if(stringEncriptada.includes(matrizCodigo[i][0])){
-            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]) 
-        }
+function encrypt() {
+    const chars = {
+    "a": "ai",
+    "e": "enter",
+    "i": "imes",
+    "o": "ober",
+    "u": "ufat"        
     }
-    return stringEncriptada
-}
 
-
-function btnDesencriptar(){
-    const textoEncriptado = desencriptar(textArea.value)
-    mensaje.value = textoEncriptado
-    textArea.value = "";
-    
-}
-
-function desencriptar(stringDesencriptada){
-    let matrizCodigo = [["e","enter"],["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringDesencriptada = stringDesencriptada.toLowerCase()
-
-    for(let i = 0; i < matrizCodigo.length; i++){
-        if(stringDesencriptada.includes(matrizCodigo[i][1])){
-            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]) 
-        }
+    if (onlyContainsLowercase(input.value)) {
+        let encriptedText = input.value.replace(/[aeiou]/g, c => chars[c]);
+        document.getElementById("not-found").style.display = "none";
+        document.getElementById("result").style.display = "block";
+        output.textContent = encriptedText;
+    } else {
+        alert("Recuerda, sólo letras minúsculas y sin acentos");
     }
-    return stringDesencriptada
+
+    document.getElementById("paste").style.display = "none";
 }
 
+function desencrypt() {
+    const chars = {
+        "ai": "a",
+        "enter": "e",
+        "imes": "i",
+        "ober": "o",
+        "ufat": "u"
+        }
 
+    if (onlyContainsLowercase(input.value)) {
+        let desencriptedText = input.value.replace(/ai|enter|imes|ober|ufat/g, c => chars[c]);
+        document.getElementById("not-found").style.display = "none";
+        document.getElementById("result").style.display = "block";
+        output.textContent = desencriptedText;
+    } else {
+        alert("Recuerda, sólo letras minúsculas y sin acentos");
+    }
+
+    document.getElementById("paste").style.display = "none";
+}
+
+function copy() {
+    let copyText = output.innerText;
+    navigator.clipboard.writeText(copyText);
+    document.getElementById("paste").style.display = "block";
+}
+
+function paste() {
+    navigator.clipboard
+        .readText()
+        .then((clipText) => (input.value = clipText));
+}
+
+button.forEach(element => element.addEventListener("click", (event) => {
+    element.classList.add("pulse");
+    setTimeout(function() {
+        element.classList.remove("pulse");
+    }, 800);
+}));

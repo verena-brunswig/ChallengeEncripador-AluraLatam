@@ -4,35 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap" rel="stylesheet">
-    <title>Encriptador</title>
+    <script src="https://kit.fontawesome.com/56435b6968.js" crossorigin="anonymous"></script>
+    <title>Encriptador de texto</title>
 </head>
 <body>
-    <header>
-        <img class="logo" src="Assets/Logo.png" alt="logo de alura" >
+    <header
+      <a href="index.html"><img src="Assets/Logo.png" alt="logo Alura"></a>
     </header>
-    
     <main>
-        <section>
-            <textarea class="text-area" cols="30" rows="10" placeholder="Ingrese el texto aqui"></textarea>
+        <section class="input">
+            <textarea class="input__text" name="input-text" id="input-text" autocomplete="off" placeholder="Ingrese el texto aquí"></textarea>
             <div>
-                <h6 class="informacion">Solo letras minúsculas y sin acentos</h6>
-            </div>
-            <div class="botones">
-                <button class="btn-encriptar" onclick="btnEncriptar()">Encriptar</button>
-                <button class="btn-desencriptar" onclick="btnDesencriptar()">Desencriptar</button>
+                <p>Sólo letras minúsculas y sin acentos</p>
+                <div class="input__buttons">
+                    <button class="input__buttons__button" onclick="encrypt()">Encriptar</button>
+                    <button class="input__buttons__button button--main" onclick="desencrypt()">Desencriptar</button>
+                </div>
             </div>
         </section>
-        <section>
-            <textarea class="mensaje" cols="20" rows="10"></textarea>
-            <div>
-                <button class="copiar">Copiar</button>
+        <section class="output">
+            <div class="output__not-found" id="not-found">
+                <img class="output__not-found__doll" src="Assets/Muñeco.png" alt="imagen de muñeco con lupa">
+                <div class="output__not-found__text-box">
+                    <p>Ningún mensaje fue encontrado</p>
+                    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                </div>
+            </div>
+            <div class="output__result" id="result">
+                <p class="output__result__text" id="output-text"></p>
+                <div class="output__result__buttons">
+                    <button class="output__result__buttons__button" onclick="copy()">Copiar</button>
+                    <button class="output__result__buttons__button button--accent-2" id="paste" onclick="paste()">Pegar</button>
+                    
+                </div>
             </div>
         </section>
     </main>
-<script src="script.js"></script>
+    <footer>
+        <p>
+            Challenge de Principiante en Programación
+            <a target="_blank" href="https://github.com/verena-brunswig"><i class="fa-brands fa-github"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/verena-bruns/"><i class="fa-brands fa-linkedin"></i></a>
+        </p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
