@@ -1,10 +1,10 @@
 :root {
-    --color-main: #F3F5FC;
-    --color-accent-1: #0A3871;
-    --color-accent-2: #FFFFFF;
-    --color-accent-3: #495057;
-    --color-hover-1: #052051;
-    --color-hover-2: #CED4DA;
+    --color-main: #ddbcf3;
+    --color-accent-1: #6e0e94;
+    --color-accent-2: #f0cea7;
+    --color-accent-3: #7a324a;
+    --color-hover-1: #7a238b;
+    --color-hover-2: #7a93da;
 }
 
 * {
@@ -15,7 +15,7 @@ body {
     background: var(--color-main);
     font-family: Inter;
     font-weight: 400;
-    color: var(--color-accent-1);
+    color: rgb(29, 32, 44);
     height: 100vh;
 }
 
@@ -47,16 +47,17 @@ main {
 }
 
 .input__text {
-    background: var(--color-main);
+    background: var(--color-accent-2);
     height: 100%;
     width: 100%;
-    padding: 0;
+    padding: 10px;
     border: 0;
+    border-radius: 20px;
     outline: none;
     border-color: none;
     font-family: Inter;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--color-accent-1);
     resize: none;
 }
@@ -70,7 +71,7 @@ main {
 .input p {
     font-size: 12px;
     line-height: 150%;
-    color: var(--color-accent-3);
+    color: black;
     opacity: 0.8;
     margin: 16px 0;
 }
@@ -89,7 +90,8 @@ main {
     border-radius: 24px;
     padding: 24px;
     text-align: center;
-    font-size: 16px;
+    font-size: 30px;
+    font-weight: bolder;
     line-height: 19px;
     transition-duration: 0.4s;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
@@ -199,6 +201,8 @@ main {
 
 /* Footer */
 footer {
+    font-size: 20px;
+    font-weight: bold;
     height: 4%;
     width: 100%;
     padding: 0 40px;
@@ -220,7 +224,7 @@ footer  a {
 /* Animations */
 .pulse {
     animation: pulse 1s forwards ease-out;
-    /* box-shadow: 0px 15px 28px -11px rgba(255, 79, 93, 0.9); */
+
 }
 @-webkit-keyframes pulse {
     0% {
